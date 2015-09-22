@@ -1,0 +1,15 @@
+# Output products list for <dsp48a12>
+_xmsgs\pn_parser.xmsgs
+dsp48a12.asy
+dsp48a12.gise
+dsp48a12.ngc
+dsp48a12.sym
+dsp48a12.v
+dsp48a12.veo
+dsp48a12.vhd
+dsp48a12.vho
+dsp48a12.xco
+dsp48a12.xise
+dsp48a12_flist.txt
+dsp48a12_readme.txt
+dsp48a12_xmdf.tcl

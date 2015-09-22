@@ -1,0 +1,5 @@
+xst -intstyle ise -ifn "F:/jiaweiwei/Project/FIR LPF/fir_lpf_6dsp/filter_6dsp.xst" -ofn "F:/jiaweiwei/Project/FIR LPF/fir_lpf_6dsp/filter_6dsp.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ip -nt timestamp -i -p xc6slx100t-fgg484-3 "filter_6dsp.ngc" filter_6dsp.ngd  
+map -intstyle ise -p xc6slx100t-fgg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o filter_6dsp_map.ncd filter_6dsp.ngd filter_6dsp.pcf 
+par -w -intstyle ise -ol high -mt off filter_6dsp_map.ncd filter_6dsp.ncd filter_6dsp.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml filter_6dsp.twx filter_6dsp.ncd -o filter_6dsp.twr filter_6dsp.pcf 
