@@ -72,32 +72,39 @@ module test_filter_6dsp;
 
 	end
 	
-	always @(posedge clk_20m or posedge sclr) begin
-		if(sclr == 1'd1) begin
-			filter_in <= 10'd0;
-			i <= 4'd0;
+	always @(posedge clk_20m or posedge sclr)
+		begin
+			if(sclr == 1'd1)
+				begin
+					filter_in <= 10'd0;
+					i <= 8'd0;
+				end
+			else
+				begin
+					if(i>100)
+						filter_in <= 10'd0;
+					else
+						begin
+							filter_in <= data_in[i];
+							i <= i+8'd1;
+						end
+				end
 		end
-		else begin
-			if(i>100)
-				filter_in <= 10'd0;
-			else begin
-				filter_in <= data_in[i];
-				i <= i+4'd1;
-			end
-		end
-	end
 
-	always @(negedge clk_20m or posedge sclr) begin
-		if(sclr == 1'd1) begin
-			j <= 4'd0;
+	always @(negedge clk_20m or posedge sclr)
+		begin
+			if(sclr == 1'd1)
+				begin
+					j <= 8'd0;
+				end
+			else
+				begin
+					$fdisplay(w_file,"%h",filter_out);
+					j <= j+8'd1;
+					if(j == 8'd100)
+						$stop;
+				end
 		end
-		else begin
-			$fdisplay(w_file,"%h",filter_out);
-			j = j+8'd1;
-			if(j == 8'd100)
-				$stop;
-		end
-	end
       
 endmodule
 
